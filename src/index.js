@@ -20,7 +20,8 @@ app.put('/lembretes/:id/observacoes', async (req, res) => {
         observacoesPorLembreteId[req.params.id] || [];
     observacoesDoLembrete.push({
         id: idObs,
-        texto
+        texto,
+        status:'aguardando'
     });
     observacoesPorLembreteId[req.params.id] =
         observacoesDoLembrete;
@@ -29,7 +30,8 @@ app.put('/lembretes/:id/observacoes', async (req, res) => {
         dados: {
             id: idObs,
             texto,
-            lembreteId: req.params.id
+            lembreteId: req.params.id,
+            status:'aguardando'
         }
     })
     res.status(201).send(observacoesDoLembrete);
